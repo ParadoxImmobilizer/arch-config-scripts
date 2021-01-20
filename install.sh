@@ -4,7 +4,6 @@ mkfs.ext4 -F /dev/sda1
 mkswap /dev/sda2
 swapon /dev/sda2
 mount /dev/sda1 /mnt
-pacman -Syu --noconfirm
 pacman -S --noconfirm pacman-contrib
 curl -s "https://www.archlinux.org/mirrorlist/?country=US&protocol=https&ip_version=4" | sed -e 's/.Server/Server/' | rankmirrors -n 10 - > /etc/pacman.d/mirrorlist
 pacstrap -i /mnt base linux base-devel linux-firmware vim grub sudo dhcpcd xfce4 xorg-server xfce4-goodies qbittorrent firefox noto-fonts ntfs-3g gvfs virtualbox-guest-utils arc-gtk-theme papirus-icon-theme vlc base-devel unzip
