@@ -37,5 +37,5 @@ visudo
 ' > /mnt/test.sh
 chmod +x /mnt/test.sh
 arch-chroot /mnt ./test.sh
-shutdown now
+# shutdown now
 # 3, 4, 5, 6, 9, 10, 11, 12, 14, 16, 17, 19, 21, 23, 24, 26, 27, 29, 38
