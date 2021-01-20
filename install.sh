@@ -1,3 +1,4 @@
+dbm=False
 [ $1 == "-c" ] && dbm=True
 [ $dbm == True ] && read -p "Setting up filesystem..."
 sfdisk /dev/sda < filesys
@@ -45,3 +46,4 @@ chmod +x /mnt/test.sh
 arch-chroot /mnt ./test.sh
 # shutdown now
 # 3, 4, 5, 6, 9, 10, 11, 12, 14, 16, 17, 19, 21, 23, 24, 26, 27, 29, 38
+# 1, 3, 4, 5, 6, 11, 22, 23, 28
