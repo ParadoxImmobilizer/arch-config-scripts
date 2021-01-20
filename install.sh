@@ -9,7 +9,7 @@ mount /dev/sda1 /mnt
 [ $dbm == True ] && read -p "Installing pacman-contrib..."
 pacman -S --noconfirm pacman-contrib
 [ $dbm == True ] && read -p "Configuring mirrorlist..."
-curl -s "https://www.archlinux.org/mirrorlist/?country=US&protocol=https&ip_version=4" | sed -e 's/.Server/Server/' | rankmirrors -n 10 - > /etc/pacman.d/mirrorlist
+curl -s "https://archlinux.org/mirrorlist/?country=US&protocol=https&ip_version=4" | sed -e 's/.Server/Server/' | rankmirrors -n 10 - > /etc/pacman.d/mirrorlist
 [ $dbm == True ] && read -p "Installing base system..."
 pacstrap -i /mnt base linux base-devel linux-firmware vim grub sudo dhcpcd xfce4 xorg-server xfce4-goodies qbittorrent firefox noto-fonts ntfs-3g gvfs virtualbox-guest-utils arc-gtk-theme papirus-icon-theme vlc base-devel unzip
 genfstab -U /mnt >> /mnt/etc/fstab
