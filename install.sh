@@ -12,7 +12,7 @@ pacman -S --noconfirm pacman-contrib
 [ $dbm == True ] && read -p "Configuring mirrorlist..."
 curl -s "https://archlinux.org/mirrorlist/?country=US&protocol=https&ip_version=4" | sed -e 's/.Server/Server/' | rankmirrors -n 10 - > /etc/pacman.d/mirrorlist
 [ $dbm == True ] && read -p "Installing base system..."
-pacstrap -i /mnt base linux base-devel linux-firmware vim grub sudo dhcpcd xfce4 xorg-server xfce4-goodies qbittorrent firefox noto-fonts ntfs-3g gvfs virtualbox-guest-utils arc-gtk-theme papirus-icon-theme vlc base-devel unzip
+pacstrap -i /mnt base linux base-devel linux-firmware mousepad ristretto thunar-archive-plugin thunar-media-tags-plugin xfce4-clipman-plugin xfce4-fsguard-plugin xfce4-notifyd xfce4-pulseaudio-plugin xfce4-whiskermenu-plugin vim mc htop grub sudo dhcpcd xfce4 xorg-server firefox noto-fonts ntfs-3g gvfs virtualbox-guest-utils arc-gtk-theme papirus-icon-theme vlc base-devel unzip git openvpn docker-compose vlc
 genfstab -U /mnt >> /mnt/etc/fstab
 [ $dbm == True ] && read -p "Writing second part of script to disk..."
 echo '
@@ -29,14 +29,15 @@ echo 127.0.1.1	arch.localdomain	arch >> /etc/hosts
 echo 1234
 echo 1234
 ) | passwd
+cat /etc/default/grub | sed "s/loglevel=3 quiet/loglevel=3/"
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
-useradd -m bold
+useradd -m main
 (
 echo 1234
 echo 1234
-) | passwd bold
-usermod -aG wheel bold vboxsf
+) | passwd main
+usermod -aG wheel vboxsf main
 systemctl enable dhcpcd.service
 systemctl enable vboxservice.service
 visudo
