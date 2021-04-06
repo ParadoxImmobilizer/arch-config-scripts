@@ -15,7 +15,7 @@ curl -s "https://archlinux.org/mirrorlist/?country=US&protocol=https&ip_version=
 [ $dbm == True ] && read -p "Installing base system..."
 pacstrap /mnt base linux linux-firmware mousepad ristretto thunar-archive-plugin thunar-media-tags-plugin xfce4-clipman-plugin xfce4-fsguard-plugin xfce4-notifyd \
 xfce4-pulseaudio-plugin xfce4-whiskermenu-plugin vim mc htop grub sudo dhcpcd xfce4 xorg-server firefox noto-fonts ntfs-3g gvfs virtualbox-guest-utils arc-gtk-theme \
-papirus-icon-theme vlc unzip git docker-compose vlc wireguard-tools openresolv pavucontrol pulseaudio
+papirus-icon-theme vlc unzip git docker-compose vlc wireguard-tools openresolv pavucontrol pulseaudio neofetch
 genfstab -U /mnt >> /mnt/etc/fstab
 [ $dbm == True ] && read -p "Writing second part of script to disk..."
 echo '
@@ -44,6 +44,7 @@ usermod -aG wheel main
 usermod -aG vboxsf main
 systemctl enable dhcpcd.service
 systemctl enable vboxservice.service
+systemctl enable docker
 visudo
 ' > /mnt/test.sh
 [ $dbm == True ] && read -p "starting part 2..."
