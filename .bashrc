@@ -27,7 +27,7 @@ alias reboot="sudo reboot"
 
 # Function definitions (more complex functions should be in their own file in ~\scripts)
 function pacmirror {	# For Arch Linux Only (update mirrorlist)
-	curl -s "https://www.archlinux.org/mirrorlist/?country=US&protocol=https&ip_version=4" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 12 - > ~/tempmirrorlist
+	curl -s "https://www.archlinux.org/mirrorlist/?country=US&protocol=https&ip_version=4" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 10 - > ~/tempmirrorlist
 	sudo cp ~/tempmirrorlist /etc/pacman.d/mirrorlist && rm ~/tempmirrorlist
 }
 
