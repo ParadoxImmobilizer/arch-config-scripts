@@ -3,14 +3,14 @@ set -e
 sfdisk /dev/sda < filesys
 timedatectl set-ntp true
 mkfs.ext4 -F /dev/sda1
-mkfs.mkfs.fat -F 32 /dev/sda3
+mkfs.fat -F 32 /dev/sda3
 mkswap /dev/sda2
 swapon /dev/sda2
 mount /dev/sda1 /mnt
 mkdir -p /mnt/boot/efi
 mount /dev/sda3 /mnt/boot/efi
-sed -i 's/#Color/Color/' > /etc/pacman.conf
-sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/' > /etc/pacman.conf
+cat /etc/pacman.conf | sed 's/#Color/Color/' /tmp/pac_conf
+cat /tmp/pac_conf | sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
 pacman -Sy
 pacman -S --noconfirm pacman-contrib
 curl -s "https://archlinux.org/mirrorlist/?country=US&protocol=https&ip_version=4" | \
@@ -41,4 +41,4 @@ pacstrap /mnt $foo
 genfstab -U /mnt > /mnt/etc/fstab
 cp postinstall/* /mnt/
 chmod +x /mnt/config.sh
-#arch-chroot /mnt ./config.sh
+arch-chroot /mnt ./config.sh
