@@ -1,9 +1,8 @@
 label: gpt
-label-id: C8B58A3A-A46F-C941-A1C0-A0B0979EFA14
 device: /dev/sda
 unit: sectors
 sector-size: 512
 
-/dev/sda2 : start=        4096, size=     8388608, type=S
-/dev/sda3 : start=        2048, size=        2048, type=21686148-6449-6E6F-744E-656564454649
-/dev/sda1 : start=     8392704, type=L
+/dev/sda2 : size= 8G,   type= S
+/dev/sda3 : size= 512M, type= U
+/dev/sda1 :             type= L
