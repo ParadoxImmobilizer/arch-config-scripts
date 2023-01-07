@@ -18,8 +18,7 @@ EOF
 echo $admin_password
 echo $admin_password
 ) | passwd
-cat /etc/default/grub | sed "s/loglevel=3 quiet/loglevel=3/" > /tmp/sed-temp
-cat /tmp/sed-temp > /etc/default/grub
+sed -i "s/loglevel=3 quiet/loglevel=3/" /etc/default/grub
 rm /tmp/sed-temp
 useradd -m $user
 (
