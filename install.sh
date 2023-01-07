@@ -9,8 +9,8 @@ swapon /dev/sda2
 mount /dev/sda1 /mnt
 mkdir -p /mnt/boot/efi
 mount /dev/sda3 /mnt/boot/efi
-cat /etc/pacman.conf | sed 's/#Color/Color/' /tmp/pac_conf
-cat /tmp/pac_conf | sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
+sed -i 's/#Color/Color/' /etc/pacman.conf
+sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
 pacman -Sy
 pacman -S --noconfirm pacman-contrib
 curl -s "https://archlinux.org/mirrorlist/?country=US&protocol=https&ip_version=4" | \
