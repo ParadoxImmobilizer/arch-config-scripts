@@ -30,5 +30,5 @@ usermod -aG vboxsf $user
 cp .bashrc .alias .x410.sh /home/$user
 mkdir -p /home/$user/.config/gtk-3.0
 cp settings.ini /home/$user/.config/gtk-3.0
-grub-install --efi-directory=/mnt/boot/efi /dev/sda
+grub-install --efi-directory=/boot/efi /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
