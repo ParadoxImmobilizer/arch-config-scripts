@@ -28,5 +28,7 @@ echo $user_password
 echo $user_password
 ) | passwd $user
 usermod -aG wheel $user
+systemctl enable sshd
+systemctl enable dhcpcd
 grub-install --efi-directory=/boot/efi /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
