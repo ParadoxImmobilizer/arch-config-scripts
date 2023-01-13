@@ -1,6 +1,15 @@
 set -x
 set -e
-sfdisk /dev/sda < filesys
+sfdisk /dev/sda << EOF
+label: gpt
+device: /dev/sda
+unit: sectors
+sector-size: 512
+
+/dev/sda2 : size= 8G,   type= S
+/dev/sda3 : size= 512M, type= U
+/dev/sda1 :             type= L
+EOF
 timedatectl set-ntp true
 mkfs.ext4 -F /dev/sda1
 mkfs.fat -F 32 /dev/sda3
